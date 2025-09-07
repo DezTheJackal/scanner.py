@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""
+OSINTHound-PortScanner (Python 3 only)
+A simple, user-friendly port scanning tool.
+
+Usage:
+    python3 scanner.py 127.0.0.1 20-1000
+"""
+
+import socket
+import sys
+
+def scan_ports(target: str, start_port: int, end_port: int, timeout: float = 1.0):
+    """Scans ports from start_port to end_port on target host."""
+    open_ports = []
+    for port in range(start_port, end_port + 1):
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(timeout)
+            result = sock.connect_ex((target, port))
+            if result == 0:
+                open_ports.append(port)
+            sock.close()
+        except KeyboardInterrupt:
+            print("\n[!] Scan interrupted by user.")
+            sys.exit()
+        except Exception:
+            pass
+    return open_ports
+
+def main():
+    if len(sys.argv) != 3:
+        print("Usage: python3 scanner.py <host> <start-end>")
+        print("Example: python3 scanner.py 127.0.0.1 20-100")
+        sys.exit(1)
+
+    host = sys.argv[1]
+    try:
+        start, end = [int(x) for x in sys.argv[2].split("-")]
+    except ValueError:
+        print("[!] Invalid port range. Use format: 20-100")
+        sys.exit(1)
+
+    print(f"[+] Scanning {host} ports {start}-{end} ...")
+    open_ports = scan_ports(host, start, end)
+
+    if open_ports:
+        print(f"[+] Open ports on {host}: {open_ports}")
+    else:
+        print("[+] No open ports found.")
+
+if __name__ == "__main__":
+    main()
