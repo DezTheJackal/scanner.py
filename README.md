@@ -3,7 +3,7 @@ OSINTHound-PortScanner is a lightweight, beginner-friendly port scanning tool wr
 _____________________________
 Dev: DezTheJackal
 _____________________________
-# OSINTHound-PortScanner 🔍
+# Hound-PortScanner 🔍
 
 A **super simple port scanner** written in **pure Python 3**.  
 No dependencies, no setup headaches. Just clone and run.
