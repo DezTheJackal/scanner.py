@@ -16,7 +16,7 @@ No dependencies, no setup headaches. Just clone and run.
 
 ```bash
 # 1. Clone repo
-git clone https://github.com/your-username/OSINTHound-PortScanner.git
+git clone https://github.com/DezTheJackal/scanner.py.git
 cd scanner.py
 
 # 2. Run the scanner
