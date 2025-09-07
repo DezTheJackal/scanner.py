@@ -28,3 +28,5 @@ $ python3 scanner.py 127.0.0.1 20-100
 [+] Scanning 127.0.0.1 ports 20-100 ...
 [+] Open ports on 127.0.0.1: [22, 80]
 
+SCRIPT ARE BEING REFINED ATM
+
